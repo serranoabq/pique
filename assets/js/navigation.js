@@ -87,9 +87,19 @@
 			}
 		});
 
+		// Get current window width
+		var $windowWidth = $(window).width();
+
 		// When the window is resized, close all menus
 		$( window ).on( 'resize', function() {
-			$( '#site-navigation-wrapper .menu-item-has-children' ).removeClass( 'focus' );
+
+			// Check window width has actually changed and it's not just iOS triggering a resize event on scroll
+        	if ( $windowWidth !== $(window).width() ) {
+				$( '#site-navigation-wrapper .menu-item-has-children' ).removeClass( 'focus' );
+
+				// Update the window width for next time
+            	$windowWidth = $( window ).width();
+			}
 		});
 
 	});

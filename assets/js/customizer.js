@@ -12,7 +12,6 @@
 
 			// If there's an expanded panel section, scroll down to that panel & highlight in the preview
 			if ( true === data.expanded ) {
-				console.log('hello');
 				$.scrollTo( $( '.' + data.section ), {
 					duration: 600,
 					offset: { 'top': -40 }
@@ -20,7 +19,6 @@
 				$( '.' + data.section ).addClass( 'pique-highlight' );
 			// If we've left the panel, remove the highlight and scroll back to the top
 			} else {
-				console.log('goodbye')
 				$.scrollTo( $( '#masthead' ), {
 					duration: 300,
 					offset: { 'top': 0 }
@@ -57,6 +55,14 @@
 					'position': 'relative'
 				} );
 			}
+			$( 'body' ).resize();
+		} );
+	} );
+
+	// Site logo.
+	wp.customize( 'site_logo', function( value ) {
+		value.bind( function() {
+			$( 'body' ).resize();
 		} );
 	} );
 

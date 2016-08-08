@@ -1,14 +1,14 @@
-# Copyright (C) 2015 Automattic
+# Copyright (C) 2016 Automattic
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Pique 1.2.0\n"
+"Project-Id-Version: Pique 1.2.7\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/pique\n"
-"POT-Creation-Date: 2015-12-24 03:50:35+00:00\n"
+"POT-Creation-Date: 2016-05-11 05:34:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: components/content-front.php:101 components/content-page.php:22
+#: components/content-front.php:99 components/content-page.php:22
 #: components/content-single.php:22 components/content.php:46
 msgid "Pages:"
 msgstr ""
@@ -110,26 +110,34 @@ msgstr ""
 msgid "Secondary Menu"
 msgstr ""
 
-#: functions.php:123
+#: functions.php:122
 msgid "Sidebar"
 msgstr ""
 
-#: functions.php:133
+#: functions.php:124
+msgid "Add widgets here to appear in your sidebar"
+msgstr ""
+
+#: functions.php:132
 msgid "First Footer Widget Area"
 msgstr ""
 
-#: functions.php:143
+#: functions.php:134 functions.php:144 functions.php:154
+msgid "Add widgets here to appear in your footer"
+msgstr ""
+
+#: functions.php:142
 msgid "Second Footer Widget Area"
 msgstr ""
 
-#: functions.php:153
+#: functions.php:152
 msgid "Third Footer Widget Area"
 msgstr ""
 
 #. Translators: If there are characters in your language that are not
 #. 	 * supported by Lora, translate this to 'off'. Do not translate
 #. 	 * into your own language.
-#: functions.php:174
+#: functions.php:173
 msgctxt "Lora font: on or off"
 msgid "on"
 msgstr ""
@@ -137,7 +145,7 @@ msgstr ""
 #. Translators: If there are characters in your language that are not
 #. 	 * supported by Karla, translate this to 'off'. Do not translate
 #. 	 * into your own language.
-#: functions.php:180
+#: functions.php:179
 msgctxt "Karla font: on or off"
 msgid "on"
 msgstr ""
@@ -160,8 +168,8 @@ msgstr ""
 
 #: inc/customizer.php:30
 msgid ""
-"This replaces your custom menu—on the front page only—with an automatically-"
-"generated menu that links to each of your panels."
+"This replaces your custom menu&mdash;on the front page only&mdash;with an "
+"automatically-generated menu that links to each of your panels."
 msgstr ""
 
 #: inc/customizer.php:39
@@ -177,7 +185,7 @@ msgstr ""
 #: inc/customizer.php:355 inc/customizer.php:406
 msgid ""
 "Add a background image to your panel by setting a featured image in the page "
-"editor. If you don’t select a page, this panel will not be displayed."
+"editor. If you don&rsquo;t select a page, this panel will not be displayed."
 msgstr ""
 
 #: inc/customizer.php:58 inc/customizer.php:109 inc/customizer.php:160
@@ -347,4 +355,39 @@ msgstr ""
 #. Template Name of the plugin/theme
 #: wp-content/themes/pub/pique/page-templates/template-testimonials.php
 msgid "Testimonials"
+msgstr ""
+#: inc/plugin-enhancements.php:92
+msgid "The %1$s is necessary to use some of this theme&rsquo;s features, including: "
+msgstr ""
+
+#: inc/plugin-enhancements.php:93
+msgid "Jetpack plugin"
+msgstr ""
+
+#: inc/plugin-enhancements.php:180
+msgid "no specific module needed"
+msgstr ""
+
+#: inc/plugin-enhancements.php:181
+msgid "Custom Content Types module"
+msgstr ""
+
+#: inc/plugin-enhancements.php:253
+msgid "Please activate %1$s. %2$s"
+msgstr ""
+
+#: inc/plugin-enhancements.php:255
+msgid "Activate"
+msgstr ""
+
+#: inc/plugin-enhancements.php:263
+msgid "Please install %1$s. %2$s"
+msgstr ""
+
+#: inc/plugin-enhancements.php:265
+msgid "Install"
+msgstr ""
+
+#: inc/plugin-enhancements.php:290
+msgid "To use %1$s, please activate the Jetpack plugin&rsquo;s %2$s."
 msgstr ""

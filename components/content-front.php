@@ -74,21 +74,19 @@
 			// Show testimonials
 			if ( 'page-templates/template-testimonials.php' === get_page_template_slug() ) :
 				// Show two random testimonials
-				$testimonials = new WP_Query( array(
-					'post_type'      => 'jetpack-testimonial',
-					'order'          => 'ASC',
-					'orderby'        => 'rand',
-					'posts_per_page' => 2,
-					'no_found_rows'  => true,
-				) );
+				$testimonials = pique_get_random_posts( 2, 'jetpack-testimonial' );
 				?>
 
-				<?php if ( $testimonials->have_posts() ) : ?>
+				<?php if ( ! empty( $testimonials ) ) : ?>
 					<div class="pique-testimonials pique-grid-two">
 						<?php
-						while ( $testimonials->have_posts() ) : $testimonials->the_post();
+						foreach ( $testimonials as $testimonial ) : 
+
+							setup_postdata( $GLOBALS['post'] =& $testimonial );
+
 							get_template_part( 'components/content', 'testimonial' );
-						endwhile;
+							
+						endforeach;
 						wp_reset_postdata();
 						?>
 					</div><!-- .pique-testimonials -->

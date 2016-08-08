@@ -19,6 +19,8 @@
 	function dynamicNav() {
 		var $sections = $( '.pique-panel' );
 		var $navLinks = $( '#site-navigation li a' );
+		var $primaryMenu = $( '#primary-menu' );
+		var $adminBar = $( '#wpadminbar' );
 
 		// Use the Waypoints plugin to indicate our current nav item
 		$sections.waypoint( {
@@ -51,11 +53,15 @@
 			offset: '110px'
 		});
 
-		// Use scrollTo library to smoothly scroll between panels
+		// Use scrollTo library to smoothly scroll between panels.
+		// Note that the admin bar lenght is only taken into consideration on screen size > 480px, when it becomes fixed.
+		// Also, we take into account he height of the primary menu after 768px.
 		$navLinks.click( function() {
+			var yCoord = ( 1 === $adminBar.length && $( window ).outerWidth() > 480 ) ? $adminBar.outerHeight() : 0;
+			var offset = $( window ).outerWidth() > 768 ? $primaryMenu.outerHeight() : 0;
 			$.scrollTo( $( this ).attr( 'href' ), {
 				duration: 400,
-				offset: { 'top': -80 }
+				offset: { 'top': -1 * ( yCoord + offset ) }
 			} );
 		});
 	}

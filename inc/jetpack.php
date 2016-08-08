@@ -6,16 +6,35 @@
  * @package Pique
  */
 
-/**
- * Add theme support for Infinite Scroll.
- * See: https://jetpack.me/support/infinite-scroll/
- */
 function pique_jetpack_setup() {
+	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
 		'wrapper'   => false,
 		'render'    => 'pique_infinite_scroll_render',
 		'footer'    => 'tertiary',
+	) );
+
+	// Add theme support for Responsive Videos.
+	add_theme_support( 'jetpack-responsive-videos' );
+
+	// Add theme support for Site Logo.
+	add_image_size( 'pique-logo', 2000, 200 );
+	add_theme_support( 'site-logo', array( 'size' => 'pique-logo' ) );
+
+	// Add theme support for Testimonial CPT.
+	add_theme_support( 'jetpack-testimonial' );
+
+	// Add theme support for Content Options.
+	add_theme_support( 'jetpack-content-options', array(
+		'blog-display' => 'excerpt',
+		'author-bio'   => false,
+		'post-details' => array(
+			'stylesheet' => 'pique-style',
+			'date'       => 'posted-on',
+			'categories' => 'cat-links',
+			'tags'       => 'tags-links',
+		),
 	) );
 } // end function pique_jetpack_setup
 add_action( 'after_setup_theme', 'pique_jetpack_setup' );
@@ -31,22 +50,6 @@ function pique_infinite_scroll_render() {
 } // end function pique_infinite_scroll_render
 
 /**
-* Add theme support for Responsive Videos.
-*/
-add_theme_support( 'jetpack-responsive-videos' );
-
-/**
- * Add support for the Site Logo
- *
- * @since Pique 1.0
- */
-function pique_site_logo_init() {
-	add_image_size( 'pique-logo', 2000, 200 );
-	add_theme_support( 'site-logo', array( 'size' => 'pique-logo' ) );
-}
-add_action( 'after_setup_theme', 'pique_site_logo_init' );
-
-/**
  * Return early if Site Logo is not available.
  *
  * @since Pique 1.0
@@ -58,8 +61,3 @@ function pique_the_site_logo() {
 		jetpack_the_site_logo();
 	}
 }
-
-/**
-* Add theme support for Testimonial CPT.
-*/
-add_theme_support( 'jetpack-testimonial' );

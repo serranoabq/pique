@@ -101,17 +101,16 @@ add_action( 'after_setup_theme', 'pique_content_width', 0 );
 
 /**
  * Use a larger content width for full-width pages.
- *
  */
-if ( ! function_exists( 'pique_content_width' ) ) :
-	function pique_content_width() {
+if ( ! function_exists( 'pique_content_width_tweak' ) ) :
+	function pique_content_width_tweak() {
 		if ( is_page_template( 'page-templates/template-full-width.php' ) ) :
 			global $content_width;
 			$content_width = 1400; /* pixels */
 			endif;
 	}
 endif;
-add_action( 'template_redirect', 'pique_content_width' );
+add_action( 'template_redirect', 'pique_content_width_tweak' );
 
 /**
  * Register widget area.
@@ -122,7 +121,7 @@ function pique_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'pique' ),
 		'id'            => 'sidebar-1',
-		'description'   => '',
+		'description'   => esc_html__( 'Add widgets here to appear in your sidebar', 'pique' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -132,7 +131,7 @@ function pique_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'First Footer Widget Area', 'pique' ),
 		'id'            => 'sidebar-2',
-		'description'   => '',
+		'description'   => esc_html__( 'Add widgets here to appear in your footer', 'pique' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -142,7 +141,7 @@ function pique_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Second Footer Widget Area', 'pique' ),
 		'id'            => 'sidebar-3',
-		'description'   => '',
+		'description'   => esc_html__( 'Add widgets here to appear in your footer', 'pique' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -152,7 +151,7 @@ function pique_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Third Footer Widget Area', 'pique' ),
 		'id'            => 'sidebar-4',
-		'description'   => '',
+		'description'   => esc_html__( 'Add widgets here to appear in your footer', 'pique' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -203,21 +202,12 @@ function pique_fonts_url() {
 }
 
 /**
- * Enqueue Google Fonts for Editor Styles
- */
-function pique_editor_styles() {
-	add_editor_style( array( 'editor-style.css', pique_fonts_url() ) );
-}
-add_action( 'after_setup_theme', 'pique_editor_styles' );
-
-/**
  * Enqueue Google Fonts for custom headers
  */
 function pique_admin_scripts() {
 	wp_enqueue_style( 'pique-fonts', pique_fonts_url(), array(), null );
 }
 add_action( 'admin_print_styles-appearance_page_custom-header', 'pique_admin_scripts' );
-
 
 /**
  * Enqueue scripts and styles.
@@ -227,15 +217,15 @@ function pique_scripts() {
 	wp_enqueue_style( 'pique-fonts', pique_fonts_url(), array(), null );
 
 	// Header and navigation
-	wp_enqueue_script( 'pique-waypoints', get_template_directory_uri() . '/assets/js/jquery.waypoints.min.js', array( 'jquery' ), '20150813', true );
+	wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/assets/js/jquery.waypoints.min.js', array( 'jquery' ), '20150813', true );
 	wp_enqueue_script( 'pique-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20120206', true );
 	wp_enqueue_script( 'pique-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
-	wp_enqueue_script( 'pique-header', get_template_directory_uri() . '/assets/js/header.js', array( 'jquery', 'pique-waypoints' ), '20151030', true );
+	wp_enqueue_script( 'pique-header', get_template_directory_uri() . '/assets/js/header.js', array( 'jquery', 'waypoints' ), '20151030', true );
 
 	// Scroll effects (only loaded on front page)
 	if ( pique_is_frontpage() ) :
-		wp_enqueue_script( 'pique-scrollTo', get_template_directory_uri() . '/assets/js/jquery.scrollTo.min.js', array( 'jquery' ), '20151030', true );
-		wp_enqueue_script( 'pique-front-page', get_template_directory_uri() . '/assets/js/front-page.js', array( 'pique-scrollTo', 'pique-waypoints' ), '20151030', true );
+		wp_enqueue_script( 'scrollTo', get_template_directory_uri() . '/assets/js/jquery.scrollTo.min.js', array( 'jquery' ), '20151030', true );
+		wp_enqueue_script( 'pique-front-page', get_template_directory_uri() . '/assets/js/front-page.js', array( 'scrollTo', 'waypoints' ), '20151030', true );
 	endif;
 
 	// Font icons, because we're retro like that
@@ -262,11 +252,38 @@ function pique_filter_front_page_template( $template ) {
 }
 add_filter( 'frontpage_template', 'pique_filter_front_page_template' );
 
-function themeslug_query_vars( $qvars ) {
+function pique_query_vars( $qvars ) {
 	$qvars[] = 'pique_panel';
 	return $qvars;
 }
-add_filter( 'query_vars', 'themeslug_query_vars' , 10, 1 );
+add_filter( 'query_vars', 'pique_query_vars' , 10, 1 );
+
+/**
+ * Get random posts; a simple, more efficient approach.
+ * MySQL queries that use ORDER BY RAND() can be pretty challenging and slow on large datasets.
+ * Also it works better with heavy caching.
+ */
+function pique_get_random_posts( $number = 1, $post_type = 'post' ) {
+	$query = new WP_Query( array(
+		'posts_per_page' => 100,
+		'fields'         => 'ids',
+		'post_type'      => $post_type
+	) );
+
+	$post_ids = $query->posts;
+
+	shuffle( $post_ids );
+
+	$post_ids = array_splice( $post_ids, 0, $number );
+
+	$random_posts = get_posts( array(
+		'post__in'    => $post_ids,
+		'numberposts' => count( $post_ids ),
+		'post_type'   => $post_type
+	) );
+
+	return $random_posts;
+}
 
 /**
  * Implement the Custom Header feature.
@@ -292,3 +309,10 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+
+/**
+ * Load plugin enhancement file to display admin notices.
+ */
+require get_template_directory() . '/inc/plugin-enhancements.php';

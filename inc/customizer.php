@@ -27,7 +27,7 @@ function pique_customize_register( $wp_customize ) {
 	$wp_customize->add_section( 'pique_general_settings', array(
 		'title'           => esc_html__( 'Menu Settings', 'pique' ),
 		'panel'           => 'pique_options_panel',
-		'description'     => __( 'This replaces your custom menu—on the front page only—with an automatically-generated menu that links to each of your panels.', 'pique' ),
+		'description'     => __( 'This replaces your custom menu&mdash;on the front page only&mdash;with an automatically-generated menu that links to each of your panels.', 'pique' ),
 	) );
 
 	$wp_customize->add_setting( 'pique_menu', array(
@@ -46,7 +46,7 @@ function pique_customize_register( $wp_customize ) {
 		'title'           => esc_html__( 'Panel 1', 'pique' ),
 		'active_callback' => 'is_front_page',
 		'panel'           => 'pique_options_panel',
-		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don’t select a page, this panel will not be displayed.', 'pique' ),
+		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don&rsquo;t select a page, this panel will not be displayed.', 'pique' ),
 	) );
 
 	$wp_customize->add_setting( 'pique_panel1', array(
@@ -97,7 +97,7 @@ function pique_customize_register( $wp_customize ) {
 		'title'           => esc_html__( 'Panel 2', 'pique' ),
 		'active_callback' => 'is_front_page',
 		'panel'           => 'pique_options_panel',
-		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don’t select a page, this panel will not be displayed.', 'pique' ),
+		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don&rsquo;t select a page, this panel will not be displayed.', 'pique' ),
 	) );
 
 	$wp_customize->add_setting( 'pique_panel2', array(
@@ -148,7 +148,7 @@ function pique_customize_register( $wp_customize ) {
 		'title'           => esc_html__( 'Panel 3', 'pique' ),
 		'active_callback' => 'is_front_page',
 		'panel'           => 'pique_options_panel',
-		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don’t select a page, this panel will not be displayed.', 'pique' ),
+		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don&rsquo;t select a page, this panel will not be displayed.', 'pique' ),
 	) );
 
 	$wp_customize->add_setting( 'pique_panel3', array(
@@ -199,7 +199,7 @@ function pique_customize_register( $wp_customize ) {
 		'title'           => esc_html__( 'Panel 4', 'pique' ),
 		'active_callback' => 'is_front_page',
 		'panel'           => 'pique_options_panel',
-		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don’t select a page, this panel will not be displayed.', 'pique' ),
+		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don&rsquo;t select a page, this panel will not be displayed.', 'pique' ),
 	) );
 
 	$wp_customize->add_setting( 'pique_panel4', array(
@@ -250,7 +250,7 @@ function pique_customize_register( $wp_customize ) {
 		'title'           => esc_html__( 'Panel 5', 'pique' ),
 		'active_callback' => 'is_front_page',
 		'panel'           => 'pique_options_panel',
-		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don’t select a page, this panel will not be displayed.', 'pique' ),
+		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don&rsquo;t select a page, this panel will not be displayed.', 'pique' ),
 	) );
 
 	$wp_customize->add_setting( 'pique_panel5', array(
@@ -301,7 +301,7 @@ function pique_customize_register( $wp_customize ) {
 		'title'           => esc_html__( 'Panel 6', 'pique' ),
 		'active_callback' => 'is_front_page',
 		'panel'           => 'pique_options_panel',
-		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don’t select a page, this panel will not be displayed.', 'pique' ),
+		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don&rsquo;t select a page, this panel will not be displayed.', 'pique' ),
 	) );
 
 	$wp_customize->add_setting( 'pique_panel6', array(
@@ -352,7 +352,7 @@ function pique_customize_register( $wp_customize ) {
 		'title'           => esc_html__( 'Panel 7', 'pique' ),
 		'active_callback' => 'is_front_page',
 		'panel'           => 'pique_options_panel',
-		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don’t select a page, this panel will not be displayed.', 'pique' ),
+		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don&rsquo;t select a page, this panel will not be displayed.', 'pique' ),
 	) );
 
 	$wp_customize->add_setting( 'pique_panel7', array(
@@ -403,7 +403,7 @@ function pique_customize_register( $wp_customize ) {
 		'title'           => esc_html__( 'Panel 8', 'pique' ),
 		'active_callback' => 'is_front_page',
 		'panel'           => 'pique_options_panel',
-		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don’t select a page, this panel will not be displayed.', 'pique' ),
+		'description'     => __( 'Add a background image to your panel by setting a featured image in the page editor. If you don&rsquo;t select a page, this panel will not be displayed.', 'pique' ),
 	) );
 
 	$wp_customize->add_setting( 'pique_panel8', array(
